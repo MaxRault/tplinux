@@ -1,0 +1,14 @@
+#!/bin/bash
+
+Mail=$(whiptail --title "Envoi d'un simple mail" --inputbox "Quel est votre adresse mail ?" 10 60 remy.brousset@aquilenet.fr 3>&1 1>&2 2>&3)
+        exitstatus=$?
+        if [ $exitstatus = 0 ]; then
+                printf "Subject:Test envoi de mail\nCeci est un mail de test merci de ne pas y répondre" | msmtp $Mail
+        else
+                echo "Au revoir"
+	fi
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi

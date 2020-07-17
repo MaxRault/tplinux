@@ -1,0 +1,8 @@
+#!/bin/bash
+if (whiptail --title "Projet db" --yesno "Voulez vous supprimez ou créer la bdd ?" --yes-button "créer" --no-button "supprimer"  10 60) then
+	echo "création de la base de données projet"
+         bash ~/Bureau/createProjectDataBase
+else
+	echo "suppression de la bdd projet"
+         bash ~/Bureau/deleteProjectDataBase
+fi

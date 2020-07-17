@@ -1,0 +1,10 @@
+#!/bin/bash
+crontab -u root -l
+
+sleep 30
+
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi

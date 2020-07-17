@@ -1,0 +1,46 @@
+#!/bin/bash
+OPTION=$(whiptail --title "Menu Box" --menu "Choisissez le type de commande à executer" 15 60 4 \
+"1" "Les disque lvm + raid 5 (montage ou démontage)" \
+"2" "Docker et Docker compose (instalation/désinstalation)" \
+"3" "La base de données (création/suppression)" \
+"4" "La Backup de la bdd" \
+"5" "La restoration de la bdd" \
+"6" "Envoi de mail (simple ou test défaillance disque)" \
+"7" "Afficher la crontab (root uniquement)" 3>&1 1>&2 2>&3)
+ 
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+    case $OPTION in
+
+  "1")
+    bash ~/Bureau/MountOrUnmountDiskScript
+    ;;
+
+  "2")
+    bash ~/Bureau/installOrUninstallDocker
+    ;;
+
+  "3")
+    bash ~/Bureau/databaseManagment
+    ;;
+
+  "4")
+    bash ~/Bureau/backupProjectDataBase
+    ;;
+
+  "5")
+    bash ~/Bureau/restoreProjectDataBase
+    ;;
+
+  "6")
+    bash ~/Bureau/mailTest
+    ;;
+
+  "7")
+     bash ~/Bureau/AfficherCronTab
+    ;;
+
+esac
+else
+    echo "Au revoir"
+fi

@@ -1,0 +1,11 @@
+#!/bin/bash
+docker exec phpmyadmin_db_1 /usr/bin/mysqldump -u root --password=1234osradar project > backup.sql
+
+echo "nous vous laissons quelques secondes afins de lire les résultats de l'opération"
+sleep 10
+
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi

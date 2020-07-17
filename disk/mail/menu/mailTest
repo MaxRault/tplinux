@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if (whiptail --title "Test mail" --yesno "Quel test voulez vous ?" --yes-button "simple mail" --no-button "Defaillance Raid"  10 60) then
+	bash ~/Bureau/testMail
+else
+	bash ~/Bureau/testdefaillanceDisk
+fi

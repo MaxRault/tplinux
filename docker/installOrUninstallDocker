@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if (whiptail --title "Docker-ce et Docker-compose" --yesno "Voulez-vous installer ou désinstaller Docker ?" --yes-button "Installer" --no-button "Désinstaller" 10 60) then
+	apt install docker-ce docker-compose -y
+	docker run hello-world
+else
+	apt purge -y docker-engine docker docker.io docker-ce docker-ce-cli docker-compose
+	apt autoremove -y --purge docker-engine docker docker.io docker-ce docker-compose
+fi
+
+echo "nous vous laissons quelques secondes afins de lire les résultats de l'opération"
+sleep 30
+
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi

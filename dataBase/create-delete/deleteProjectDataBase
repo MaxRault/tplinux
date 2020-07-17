@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker exec -d phpmyadmin_db_1 mysql -u root -p1234osradar project -e 'DROP DATABASE project;'
+
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi

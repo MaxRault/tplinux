@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "envoi du mail"
+mdadm --monitor --scan --test -1
+echo "Veuillez vérifier la boite mail: test.tp.linux.mr@gmail.com"
+
+echo "nous vous laissons quelques secondes afins de lire les résultats de l'opération"
+sleep 10
+
+if (whiptail --title "Executez une autre commande" --yesno "voulez-vous éxecutez une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+	bash ~/Bureau/projectLinuxMR
+else
+	echo "Au revoir"
+fi

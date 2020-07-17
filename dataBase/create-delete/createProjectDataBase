@@ -1,0 +1,36 @@
+#!/bin/bash
+docker exec -d phpmyadmin_db_1 mysqladmin -u root -p1234osradar create project 
+docker exec -d phpmyadmin_db_1  mysql -u root -p1234osradar project -e '
+CREATE TABLE user
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    mail VARCHAR(255),
+    tel VARCHAR(13),
+    date_naissance DATE
+);
+CREATE TABLE projet 
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(100),
+    date_Debut DATE,
+    date_fin DATE
+);
+CREATE TABLE users_projects
+(
+    userprojectsID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idUser INT,
+    idProject INT,
+    CONSTRAINT FK_idUser FOREIGN KEY (idUser)
+    REFERENCES user(id),
+    CONSTRAINT FK_idProject FOREIGN KEY (idProject)
+    REFERENCES projet(id)
+);
+'
+
+if (whiptail --title "Lancer une autre commande" --yesno "Voulez vous lancer une autre commande ?" --yes-button "oui" --no-button "non"  10 60) then
+        bash ~/Bureau/projectLinuxMR
+else
+        echo "Au revoir"
+fi
